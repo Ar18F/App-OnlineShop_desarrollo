@@ -19,14 +19,9 @@ struct ProductoFila: View {
                 }
             }
             VStack {
-                Text(producto.title)
-                Text("$ "+String(producto.price))
-                    .offset(x:-70)
-            }
-            .padding()
-            
-        }
-        .padding()
+                Text(producto.title + "\n$ "+String(producto.price))
+            }.padding()
+        }.padding()
     }
 }
 
