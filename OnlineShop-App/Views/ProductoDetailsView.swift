@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct ProductoDetailsView: View {
+    @ObservedObject private var vm = ProductosDBViewModel()
     var producto: Producto
     
     var body: some View {
@@ -18,7 +19,7 @@ struct ProductoDetailsView: View {
                     case .success(let image):
                         image
                             .resizable()
-                            .frame(width: 100, height: 100)
+                            .frame(width: 120, height: 130)
                     case .failure:
                         Image(systemName: "photo")
                             .resizable()
@@ -48,7 +49,7 @@ struct ProductoDetailsView: View {
                 .padding()
                 
                 Button(action: {
-                    print("Button tapped")
+                    self.vm.add(nombre: producto.title, categoria: producto.category, precio: producto.price)
                 }) {
                     Text("\(String(producto.price)) € - Añadir al carrito")
                         .foregroundColor(.white)

@@ -6,10 +6,16 @@
 //
 
 import SwiftUI
+import FirebaseCore
 
 @main
 struct OnlineShop_App: App {
     
+ 
+    init(){
+        FirebaseApp.configure()
+    }
+  
     
     var body: some Scene {
         WindowGroup {

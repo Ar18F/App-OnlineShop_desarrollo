@@ -9,6 +9,8 @@ import SwiftUI
 //https://fakestoreapi.com/docs
 //https://github.com/keikaavousi/fake-store-api
 struct TabViewMenu: View {
+    
+    @ObservedObject private var vm = ProductosDBViewModel()
         var body: some View {
             
         VStack {
@@ -30,8 +32,8 @@ struct TabViewMenu: View {
                     .tabItem {
                         Label("Account", systemImage: "person.crop.circle.fill")
                     }
-                Text("OrderView()")
-                    .badge(2)
+                OrderView()
+                    .badge(vm.productoDataBase.count)
                     .tabItem {
                         Label("Order", systemImage: "cart.fill")
                     }
