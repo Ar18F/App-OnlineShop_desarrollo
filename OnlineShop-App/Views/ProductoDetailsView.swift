@@ -1,9 +1,11 @@
 import SwiftUI
 
 struct ProductoDetailsView: View {
-    @EnvironmentObject private var vm : ProductosDBViewModel
+    @EnvironmentObject private var vm: ProductosDBViewModel
     var producto: Producto
-    
+    @Binding var isPresented: Bool // Agregado un binding para controlar la presentación de la vista
+    @Environment(\.presentationMode) private var presentationMode
+
     var body: some View {
         ZStack {
             // Fondo semiopaco
@@ -12,6 +14,19 @@ struct ProductoDetailsView: View {
             
             // Contenido principal
             VStack {
+                HStack {
+                    Spacer() // Mover el botón al extremo derecho
+                    Button(action: {
+                        isPresented = false
+                        presentationMode.wrappedValue.dismiss() // Cierra la vista actual y vuelve a la anterior
+                    }) {
+                        Image(systemName: "xmark.circle.fill")
+                            .foregroundColor(.gray)
+                            .font(.title)
+                            .padding()
+                    }
+                }
+                
                 AsyncImage(url: URL(string: producto.image)) { phase in
                     switch phase {
                     case .empty:
@@ -38,7 +53,7 @@ struct ProductoDetailsView: View {
                     
                 Text(producto.description)
                     .padding()
-                    .font(.system(size:16))
+                    .font(.system(size: 16))
                 
                 HStack {
                     ForEach(1..<6) { index in
@@ -47,10 +62,16 @@ struct ProductoDetailsView: View {
                     }
                 }
                 
-                
                 Button(action: {
                     self.vm.productoDataBase.append(producto)
+
                     
+                    print(self.vm.productoDataBase.count)
+
+                    self.vm.add(nombre: producto.title, categoria: producto.category, precio: producto.price)
+                    isPresented = false
+                    presentationMode.wrappedValue.dismiss() // Cierra la vista actual y vuelve a la anterior
+
                 }) {
                     Text("\(String(producto.price)) € - Añadir al carrito")
                         .foregroundColor(.white)
@@ -69,6 +90,6 @@ struct ProductoDetailsView: View {
 
 struct ProductoDetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        ProductoDetailsView(producto: Mockdata.sampleProduct)
+        ProductoDetailsView(producto: Mockdata.sampleProduct, isPresented: .constant(true))
     }
 }
