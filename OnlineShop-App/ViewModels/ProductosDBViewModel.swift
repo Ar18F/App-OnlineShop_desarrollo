@@ -21,7 +21,7 @@ class ProductosDBViewModel: ObservableObject {
                 print("ERROR: No hay documentos")
                 return
             }
-
+            
             self.productoDataBase = documents.map { (queryDocumentSnapshot) -> Producto in
                 let data = queryDocumentSnapshot.data()
                 let identificador = data["id"] as? Int ?? 0
@@ -36,11 +36,17 @@ class ProductosDBViewModel: ObservableObject {
         }
     }
     
-    func add(nombre: String, categoria: String, precio: Double) {
-        db.collection("producto").addDocument(data: ["nombre": nombre, "categoria": categoria, "precio": precio])
+    func add() {
+        do{
+            try db.collection("producto").addDocument(from: productoDataBase)
+            self.productoDataBase = []
+        }catch{
+            print("Error")
+        }
     }
-    
-    
-    
 }
+    
+    
+    
+
 
