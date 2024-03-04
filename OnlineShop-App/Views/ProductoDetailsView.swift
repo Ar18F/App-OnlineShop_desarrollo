@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct ProductoDetailsView: View {
-    @ObservedObject private var vm = ProductosDBViewModel()
+    @EnvironmentObject private var vm : ProductosDBViewModel
     var producto: Producto
     
     var body: some View {
@@ -46,10 +46,11 @@ struct ProductoDetailsView: View {
                             .foregroundColor(.yellow)
                     }
                 }
-                .padding()
+                
                 
                 Button(action: {
-                    self.vm.add(nombre: producto.title, categoria: producto.category, precio: producto.price)
+                    self.vm.productoDataBase.append(producto)
+                    print(self.vm.productoDataBase.count)
                 }) {
                     Text("\(String(producto.price)) € - Añadir al carrito")
                         .foregroundColor(.white)

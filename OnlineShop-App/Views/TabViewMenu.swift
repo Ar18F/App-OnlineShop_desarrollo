@@ -18,8 +18,11 @@ struct TabViewMenu: View {
                 Image("logo")
                     .resizable()
                     .frame(width: 90,height: 80)
-                .offset(x: -90)
+                .offset(x: -40)
                 Text("Products")
+                    .font(.system(size: 40))
+                    .bold()
+                    .offset(x:-20)
             }
             
             TabView {

@@ -8,17 +8,16 @@
 import SwiftUI
 
 struct OrderView: View {
-    @ObservedObject private var vm = ProductosDBViewModel()
+    @EnvironmentObject var vm : ProductosDBViewModel
+    
     var body: some View {
-        List(vm.productoDataBase) { producto in
-            ProductoFila(producto: producto)
-            
-            VStack {
-                Text(producto.title + "\n$ "+String(producto.price))
-            }.padding()
-        }.onAppear() {
-            self.vm.all()
-        }.navigationTitle("Productos")
+        NavigationView {
+            List(vm.productoDataBase) { producto in
+                VStack {
+                    Text(producto.title + "\n$ "+String(producto.price))
+                }.padding()
+            }
+        }
     }
 }
 

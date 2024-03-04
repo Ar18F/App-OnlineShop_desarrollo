@@ -10,16 +10,17 @@ import FirebaseCore
 
 @main
 struct OnlineShop_App: App {
-    
+    var vm : ProductosDBViewModel
  
     init(){
         FirebaseApp.configure()
+        vm = ProductosDBViewModel()
     }
   
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            TabViewMenu().environmentObject(vm)
         }
     }
 }
