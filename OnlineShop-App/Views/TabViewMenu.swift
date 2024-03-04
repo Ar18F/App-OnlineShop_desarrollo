@@ -35,9 +35,6 @@ struct TabViewMenu: View {
                 VStack {
                     // Contenido específico para la pestaña "Home"
                     OrderViewTabContent()
-
-                    // Lista de productos
-                    OrderView()
                 }
             }
             .badge(vm.productoDataBase.count)
@@ -77,12 +74,33 @@ struct AccountTabContent: View {
 
 struct OrderViewTabContent: View {
     var body: some View {
-        HStack {
-            Text("🫰 Shopping Cart ") // Agregamos el emoji aquí
-                .font(.system(size: 40))
-                .bold()
-                .offset(x: -20)
+        VStack {
+            HStack {
+                Text("🫰 Shopping Cart ") // Agregamos el emoji aquí
+                    .font(.system(size: 40))
+                    .bold()
+                    .offset(x: -20)
+            }
+
+            // Lista de productos en OrderView
+            OrderView()
+
+            Spacer() // Agregamos un espacio para separar la lista del botón
+
+            Button(action: {
+                // Acciones al presionar el botón Checkout
+                // Puedes agregar aquí la lógica para el proceso de pago, por ejemplo
+            }) {
+                Text("Checkout")
+                    .foregroundColor(.white)
+                    .font(.headline)
+                    .frame(width: 200, height: 50) // Tamaño del botón
+                    .background(Color.purple) // Fondo lila
+                    .cornerRadius(10) // Esquinas redondeadas
+            }
+            .padding() // Agregamos un espacio alrededor del botón
         }
+        .padding() // Añadimos un espacio alrededor del contenido
     }
 }
 
