@@ -10,7 +10,7 @@ import SwiftUI
 //https://github.com/keikaavousi/fake-store-api
 struct TabViewMenu: View {
     
-    @ObservedObject private var vm = ProductosDBViewModel()
+    @EnvironmentObject private var vm : ProductosDBViewModel
         var body: some View {
             
         VStack {

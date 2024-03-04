@@ -50,7 +50,7 @@ struct ProductoDetailsView: View {
                 
                 Button(action: {
                     self.vm.productoDataBase.append(producto)
-                    print(self.vm.productoDataBase.count)
+                    
                 }) {
                     Text("\(String(producto.price)) € - Añadir al carrito")
                         .foregroundColor(.white)

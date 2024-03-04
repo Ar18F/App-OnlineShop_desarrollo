@@ -11,12 +11,9 @@ struct OrderView: View {
     @EnvironmentObject var vm : ProductosDBViewModel
     
     var body: some View {
-        NavigationView {
-            List(vm.productoDataBase) { producto in
-                VStack {
-                    Text(producto.title + "\n$ "+String(producto.price))
-                }.padding()
-            }
+        
+        List(vm.productoDataBase) { producto in
+            ProductoFila(producto: producto)
         }
     }
 }
