@@ -19,17 +19,17 @@ struct ProductoDetailsView: View {
                     case .success(let image):
                         image
                             .resizable()
-                            .frame(width: 120, height: 130)
+                            .frame(width: 120, height: 120)
                     case .failure:
                         Image(systemName: "photo")
                             .resizable()
-                            .frame(width: 200, height: 200)
+                            .frame(width: 180, height: 180)
                             .foregroundColor(.gray)
                     @unknown default:
                         EmptyView()
                     }
                 }
-                .frame(height: 100)
+                .frame(height: 130)
                 
                 Text(producto.title)
                     .font(.system(size: 20))
@@ -61,6 +61,7 @@ struct ProductoDetailsView: View {
             .padding()
             .background(Color.white)
             .cornerRadius(15)
+            .frame(width: 300)
         }
     }
 }

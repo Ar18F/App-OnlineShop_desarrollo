@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		42ADDB732B8932D1002376A6 /* ListaProductosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42ADDB722B8932D1002376A6 /* ListaProductosView.swift */; };
+		42BCF4BB2B964028006AE6D7 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BCF4BA2B964028006AE6D7 /* AccountView.swift */; };
 		6F08DEFB2B717D9900A838E8 /* OnlineShop_App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F08DEFA2B717D9900A838E8 /* OnlineShop_App.swift */; };
 		6F08DEFD2B717D9900A838E8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F08DEFC2B717D9900A838E8 /* ContentView.swift */; };
 		6F08DEFF2B717D9C00A838E8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F08DEFE2B717D9C00A838E8 /* Assets.xcassets */; };
@@ -51,6 +52,7 @@
 
 /* Begin PBXFileReference section */
 		42ADDB722B8932D1002376A6 /* ListaProductosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListaProductosView.swift; sourceTree = "<group>"; };
+		42BCF4BA2B964028006AE6D7 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		6F08DEF72B717D9900A838E8 /* OnlineShop-App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "OnlineShop-App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F08DEFA2B717D9900A838E8 /* OnlineShop_App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlineShop_App.swift; sourceTree = "<group>"; };
 		6F08DEFC2B717D9900A838E8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 				42ADDB722B8932D1002376A6 /* ListaProductosView.swift */,
 				6FFFD02C2B9272E8006E4804 /* ProductoDetailsView.swift */,
 				6FBC2B7F2B93F67A00448F73 /* OrderView.swift */,
+				42BCF4BA2B964028006AE6D7 /* AccountView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -348,6 +351,7 @@
 				6F08DF312B71BE5400A838E8 /* NetworkManager.swift in Sources */,
 				6FFFD02D2B9272E8006E4804 /* ProductoDetailsView.swift in Sources */,
 				6F08DF2D2B719DA600A838E8 /* TabViewMenu.swift in Sources */,
+				42BCF4BB2B964028006AE6D7 /* AccountView.swift in Sources */,
 				6F08DEFD2B717D9900A838E8 /* ContentView.swift in Sources */,
 				6FBC2B822B941E8F00448F73 /* ProductosDBViewModel.swift in Sources */,
 				6F08DF2B2B71825800A838E8 /* ProductoFila.swift in Sources */,

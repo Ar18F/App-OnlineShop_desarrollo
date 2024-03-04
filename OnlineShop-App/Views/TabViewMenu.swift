@@ -27,11 +27,11 @@ struct TabViewMenu: View {
                     .tabItem {
                         Label("Home", systemImage: "house.fill")
                     }
-                Text("AccountView()")
+                AccountView()
                     .badge("!")
                     .tabItem {
                         Label("Account", systemImage: "person.crop.circle.fill")
-                    }
+                    } 
                 OrderView()
                     .badge(vm.productoDataBase.count)
                     .tabItem {
