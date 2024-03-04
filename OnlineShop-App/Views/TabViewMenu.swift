@@ -35,6 +35,7 @@ struct TabViewMenu: View {
                 VStack {
                     // Contenido específico para la pestaña "Home"
                     OrderViewTabContent()
+                    OrderView()
                 }
             }
             .badge(vm.productoDataBase.count)
@@ -81,32 +82,14 @@ struct OrderViewTabContent: View {
                     .bold()
                     .offset(x: -20)
             }
-
-            // Lista de productos en OrderView
-            OrderView()
-
-            Spacer() // Agregamos un espacio para separar la lista del botón
-
-            Button(action: {
-                // Acciones al presionar el botón Checkout
-                // Puedes agregar aquí la lógica para el proceso de pago, por ejemplo
-            }) {
-                Text("Checkout")
-                    .foregroundColor(.white)
-                    .font(.headline)
-                    .frame(width: 200, height: 50) // Tamaño del botón
-                    .background(Color.purple) // Fondo lila
-                    .cornerRadius(10) // Esquinas redondeadas
-            }
-            .padding() // Agregamos un espacio alrededor del botón
         }
-        .padding() // Añadimos un espacio alrededor del contenido
     }
 }
-
-
-struct TabViewMenu_Previews: PreviewProvider {
-    static var previews: some View {
-        TabViewMenu()
+    
+    
+    struct TabViewMenu_Previews: PreviewProvider {
+        static var previews: some View {
+            TabViewMenu()
+        }
     }
-}
+

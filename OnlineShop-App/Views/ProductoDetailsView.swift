@@ -64,11 +64,6 @@ struct ProductoDetailsView: View {
                 
                 Button(action: {
                     self.vm.productoDataBase.append(producto)
-
-                    
-                    print(self.vm.productoDataBase.count)
-
-                    self.vm.add(nombre: producto.title, categoria: producto.category, precio: producto.price)
                     isPresented = false
                     presentationMode.wrappedValue.dismiss() // Cierra la vista actual y vuelve a la anterior
 
