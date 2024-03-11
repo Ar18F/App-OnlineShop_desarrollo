@@ -39,18 +39,22 @@ class ProductosDBViewModel: ObservableObject {
     
     func add() {
         do{
-            try db.collection("producto").addDocument(from: productoDataBase)
-            self.productoDataBase = []
+            var order = Order()
+            print(order.productos.count)
+            //if let data = try? JSONEncoder().encode(order){
+                try db.collection("producto").addDocument(from: order)
+            //}
             
+            self.productoDataBase = []
             // Imprimir precios para verificar
-            print(productoDataBase.map { $0.price })
+                    print(productoDataBase.count)
            
             total = productoDataBase.reduce(0.0) { $0 + $1.price }
             /*
             Esta linea recorre todos los productos en productoDataBase y suma sus precios para calcular el total después de agregar el documento
              */
         }catch{
-            print("Error")
+            print(error)
         }
     }
 }

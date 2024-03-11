@@ -21,7 +21,7 @@ struct OrderView: View {
             Button(action: {
                 self.vm.add()
             }) {
-                Text("\(String(vm.total)) € - Checkout")
+                Text("\(String(0.0)) € - Checkout")
                     .foregroundColor(.white)
                     .padding()
                     .background(Color.green)

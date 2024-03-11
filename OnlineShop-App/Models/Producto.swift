@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import FirebaseFirestore
 //https://fakestoreapi.com/products
 struct Producto: Codable, Identifiable{
     var id :Int
@@ -33,8 +34,13 @@ struct Mockdata{
     static let sampleProduct3 = Producto(id:3,title: "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops", price: 109.95, description: "Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday", category: "men's clothing", image: "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg", rating: rating)
     
     static let productos = [sampleProduct,sampleProduct2,sampleProduct3]
+    
 }
 
 
+struct Order:Encodable{
+    @DocumentID var id :String?
+    var productos : [Producto]=[Mockdata.sampleProduct,Mockdata.sampleProduct2]
+}
 
 

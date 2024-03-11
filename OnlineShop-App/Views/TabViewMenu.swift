@@ -37,7 +37,6 @@ struct TabViewMenu: View {
                     // Contenido específico para la pestaña "Home"
                     OrderViewTabContent()
                     OrderView()
-                        .environmentObject(vm)
                 }
             }
             .badge(vm.productoDataBase.count)
