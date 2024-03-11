@@ -38,9 +38,4 @@ struct Mockdata{
 }
 
 
-struct Order:Encodable{
-    @DocumentID var id :String?
-    var productos : [Producto]=[Mockdata.sampleProduct,Mockdata.sampleProduct2]
-}
-
 

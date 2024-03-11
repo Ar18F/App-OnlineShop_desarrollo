@@ -1,10 +1,3 @@
-//
-//  ProductosDBView.swift
-//  OnlineShop-App
-//
-//  Created by Arkaitz Lopez on 3/3/24.
-//
-
 import SwiftUI
 import FirebaseFirestore
 import Foundation
@@ -39,7 +32,7 @@ class ProductosDBViewModel: ObservableObject {
     
     func add() {
         do{
-            var order = Order()
+            var order = Order(productos: self.productoDataBase)
             print(order.productos.count)
             //if let data = try? JSONEncoder().encode(order){
                 try db.collection("producto").addDocument(from: order)
@@ -50,16 +43,15 @@ class ProductosDBViewModel: ObservableObject {
                     print(productoDataBase.count)
            
             total = productoDataBase.reduce(0.0) { $0 + $1.price }
-            /*
-            Esta linea recorre todos los productos en productoDataBase y suma sus precios para calcular el total después de agregar el documento
-             */
+            
         }catch{
             print(error)
         }
     }
 }
-    
-    
-    
 
 
+struct Order:Encodable{
+    @DocumentID var id :String?
+    var productos : [Producto]
+}

@@ -1,19 +1,11 @@
-//
-//  OrderView.swift
-//  OnlineShop-App
-//
-//  Created by Arkaitz Lopez on 3/3/24.
-//
-
 import SwiftUI
 
 struct OrderView: View {
     
-    @EnvironmentObject var vm : ProductosDBViewModel
+    @EnvironmentObject var vm: ProductosDBViewModel
     
     var body: some View {
-        
-        VStack{
+        VStack {
             List(vm.productoDataBase) { producto in
                 ProductoFila(producto: producto)
             }
@@ -21,7 +13,7 @@ struct OrderView: View {
             Button(action: {
                 self.vm.add()
             }) {
-                Text("\(String(0.0)) € - Checkout")
+                Text("\(String(format: "%.2f", self.calculateTotal())) € - Checkout")
                     .foregroundColor(.white)
                     .padding()
                     .background(Color.green)
@@ -29,8 +21,14 @@ struct OrderView: View {
             }
         }
     }
+
+    private func calculateTotal() -> Double {
+        return vm.productoDataBase.reduce(0.0) { $0 + $1.price }
+    }
 }
 
-#Preview {
-    OrderView()
+struct OrderView_Previews: PreviewProvider {
+    static var previews: some View {
+        OrderView()
+    }
 }
