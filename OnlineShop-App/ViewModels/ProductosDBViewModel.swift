@@ -13,6 +13,7 @@ import Foundation
 class ProductosDBViewModel: ObservableObject {
     
     @Published var productoDataBase: [Producto] = []
+    @Published var total: Double = 0.0
     private var db = Firestore.firestore()
     
     func all() {
@@ -40,6 +41,14 @@ class ProductosDBViewModel: ObservableObject {
         do{
             try db.collection("producto").addDocument(from: productoDataBase)
             self.productoDataBase = []
+            
+            // Imprimir precios para verificar
+            print(productoDataBase.map { $0.price })
+           
+            total = productoDataBase.reduce(0.0) { $0 + $1.price }
+            /*
+            Esta linea recorre todos los productos en productoDataBase y suma sus precios para calcular el total después de agregar el documento
+             */
         }catch{
             print("Error")
         }

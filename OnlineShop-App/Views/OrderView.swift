@@ -8,28 +8,26 @@
 import SwiftUI
 
 struct OrderView: View {
+    
     @EnvironmentObject var vm : ProductosDBViewModel
-   
     
     var body: some View {
-        var total = 0.0
-        List(vm.productoDataBase) { producto in
-            ProductoFila(producto: producto)
-            total += Double(producto.price)
-            
-            
-        }
         
-        Button(action: {
-            self.vm.add()
-        }) {
-            Text("\(String(total)) € - Checkout")
-                .foregroundColor(.white)
-                .padding()
-                .background(Color.green)
-                .cornerRadius(10)
+        VStack{
+            List(vm.productoDataBase) { producto in
+                ProductoFila(producto: producto)
+            }
+            
+            Button(action: {
+                self.vm.add()
+            }) {
+                Text("\(String(vm.total)) € - Checkout")
+                    .foregroundColor(.white)
+                    .padding()
+                    .background(Color.green)
+                    .cornerRadius(10)
+            }
         }
-        
     }
 }
 
