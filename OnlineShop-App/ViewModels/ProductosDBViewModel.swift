@@ -6,7 +6,6 @@ import Foundation
 class ProductosDBViewModel: ObservableObject {
     
     @Published var productoDataBase: [Producto] = []
-    @Published var total: Double = 0.0
     private var db = Firestore.firestore()
     
     func all() {
@@ -33,16 +32,11 @@ class ProductosDBViewModel: ObservableObject {
     func add() {
         do{
             var order = Order(productos: self.productoDataBase)
-            print(order.productos.count)
-            //if let data = try? JSONEncoder().encode(order){
-                try db.collection("producto").addDocument(from: order)
-            //}
+            
+            
+            try db.collection("producto").addDocument(from: order)
             
             self.productoDataBase = []
-            // Imprimir precios para verificar
-                    print(productoDataBase.count)
-           
-            total = productoDataBase.reduce(0.0) { $0 + $1.price }
             
         }catch{
             print(error)

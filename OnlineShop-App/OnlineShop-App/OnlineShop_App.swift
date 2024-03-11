@@ -20,7 +20,7 @@ struct OnlineShop_App: App {
     
     var body: some Scene {
         WindowGroup {
-            TabViewMenu().environmentObject(vm)
+            ContentView().environmentObject(vm)
         }
     }
 }

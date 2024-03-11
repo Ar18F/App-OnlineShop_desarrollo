@@ -8,14 +8,9 @@
 import SwiftUI
 
 struct ContentView: View {
+    @ObservedObject var app = ProductosViewModel()
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-        }
-        .padding()
+        TabViewMenu()
     }
 }
 
