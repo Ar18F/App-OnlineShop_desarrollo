@@ -3,7 +3,7 @@ import SwiftUI
 struct ProductoDetailsView: View {
     @EnvironmentObject private var vm: ProductosDBViewModel
     var producto: Producto
-    @Binding var isPresented: Bool // Agregado un binding para controlar la presentación de la vista
+    @Binding var isPresented: Bool // Agregado un binding para controlar la presentacion de la vista
     @Environment(\.presentationMode) private var presentationMode
 
     var body: some View {
@@ -35,11 +35,12 @@ struct ProductoDetailsView: View {
                         image
                             .resizable()
                             .frame(width: 120, height: 120)
+                            .foregroundColor(.white)
                     case .failure:
                         Image(systemName: "photo")
                             .resizable()
                             .frame(width: 180, height: 180)
-                            .foregroundColor(.gray)
+                            .foregroundColor(.white)
                     @unknown default:
                         EmptyView()
                     }
@@ -50,10 +51,12 @@ struct ProductoDetailsView: View {
                     .font(.system(size: 20))
                     .bold()
                     .padding()
+                    .foregroundColor(.black)
                     
                 Text(producto.description)
                     .padding()
                     .font(.system(size: 16))
+                    .foregroundColor(.black)
                 
                 HStack {
                     ForEach(1..<6) { index in

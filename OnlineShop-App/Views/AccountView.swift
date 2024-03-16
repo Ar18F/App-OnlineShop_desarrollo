@@ -68,6 +68,7 @@ struct AccountView: View {
                             Spacer()
                             Image(systemName: isDarkModeEnabled ? "moon.fill" : "moon")
                                 .foregroundColor(isDarkModeEnabled ? .yellow : .gray)
+                            
                         }
                     }
 
