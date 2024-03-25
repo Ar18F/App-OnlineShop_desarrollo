@@ -126,7 +126,7 @@ struct AccountView: View {
 
     private func toggleDarkMode() {
         isDarkModeEnabled.toggle()
-        // Puedes implementar lógica para cambiar el modo oscuro aquí
+        
     }
 }
 

@@ -5,7 +5,7 @@ struct ProductoDetailsView: View {
     var producto: Producto
     @Binding var isPresented: Bool // Agregado un binding para controlar la presentacion de la vista
     @Environment(\.presentationMode) private var presentationMode
-
+    
     var body: some View {
         ZStack {
             // Fondo semiopaco
@@ -51,16 +51,33 @@ struct ProductoDetailsView: View {
                     .font(.system(size: 20))
                     .bold()
                     .padding()
-                    .foregroundColor(.black)
-                    
+                
+                
                 Text(producto.description)
                     .padding()
                     .font(.system(size: 16))
-                    .foregroundColor(.black)
+                
                 
                 HStack {
-                    ForEach(1..<6) { index in
-                        Image(systemName: index <= Int(producto.rating.rate) ? "star.fill" : "star")
+                    let fullStars = Int(producto.rating.rate)
+                    let fractionalPart = producto.rating.rate - Double(fullStars)
+                    
+                    // Dibujar las estrellas completas
+                    ForEach(1...fullStars, id: \.self) { _ in
+                        Image(systemName: "star.fill")
+                            .foregroundColor(.yellow)
+                    }
+                    
+                    // Dibujar la estrella fraccionaria
+                    if fractionalPart > 0 {
+                        Image(systemName: "star.leadinghalf.fill")
+                            .foregroundColor(.yellow)
+                    }
+                    
+                    // Dibujar las estrellas vacias restantes
+                    let emptyStars = max(0, 5 - fullStars - (fractionalPart > 0 ? 1 : 0))
+                    ForEach(0..<emptyStars, id: \.self) { _ in
+                        Image(systemName: "star")
                             .foregroundColor(.yellow)
                     }
                 }
@@ -69,7 +86,7 @@ struct ProductoDetailsView: View {
                     self.vm.productoDataBase.append(producto)
                     isPresented = false
                     presentationMode.wrappedValue.dismiss() // Cierra la vista actual y vuelve a la anterior
-
+                    
                 }) {
                     Text("\(String(producto.price)) € - Añadir al carrito")
                         .foregroundColor(.white)
@@ -79,8 +96,8 @@ struct ProductoDetailsView: View {
                 }
             }
             .padding()
-            .background(Color.white)
             .cornerRadius(15)
+            .background(.background)
             .frame(width: 300)
         }
     }
